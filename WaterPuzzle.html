@@ -5,28 +5,33 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Water Puzzle</title>
         <link rel="stylesheet" href="style.css">
+        <script src="waterpuzzle.js"></script>
     </head>
     <body>
         <h1>2025 Water Puzzle Game</h1>
-        <div id="Game-info">
+        <div id="game-info" class="game-area">
             <p>移動次數:</p>
-            <div id="controls">
-                <label for="level-select">選擇關卡</label>
-                <!--for 屬性用來指定該 <label> 元素所關聯的表單控件。-->
-                <select id="label-select">
-                    <!--for 屬性的值應該與表單控件的 id 屬性相匹配。-->
-                    <option value="1">Level 1</option>
-                    <option value="2">Level 2</option>
-                    <option value="3">Level 3</option>
-                    <option value="4">Level 4</option>
-                    <option value="5">Level 5</option>
-                    <option value="6">Level 6</option>
-                    <option value="7">Level 7</option>
-                    <option value="8">Level 8</option>
-                    <option value="9">Level 9</option>
-                    <option value="10">Level 10</option>
-                </select>
-            </div>
+        </div>
+        <div id="controls" class="game-area">
+            <label for="level-select">選擇關卡</label>
+            <!--for 屬性用來指定該 <label> 元素所關聯的表單控件。-->
+            <select id="label-select">
+                <!--for 屬性的值應該與表單控件的 id 屬性相匹配。-->
+                <option value="1">Level 1</option>
+                <option value="2">Level 2</option>
+                <option value="3">Level 3</option>
+                <option value="4">Level 4</option>
+                <option value="5">Level 5</option>
+                <option value="6">Level 6</option>
+                <option value="7">Level 7</option>
+                <option value="8">Level 8</option>
+                <option value="9">Level 9</option>
+                <option value="10">Level 10</option>
+            </select>
+            <button id="play-button">開始遊戲</button>
+        </div>
+        <div id="game-container" class="game-area">
+            
         </div>
     </body>
 </html>
