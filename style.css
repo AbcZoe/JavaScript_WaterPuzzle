@@ -1,0 +1,13 @@
+body{
+    background-color: rgb(207, 207, 207);
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex; 
+    flex-direction: column; /* 設定排列方向為垂直 */
+    align-items: center; /* 設定子元素在主軸 (垂直方向) 上置中 */
+    justify-content: flex-start; /* 設定子元素在交叉軸 (水平方向) 上置中 */
+    height: 100vh; /*視窗高度的百分比*/
+    border:  3px solid aliceblue;
+    border-radius: 20px;
+    padding: 10px;
+    margin: 100px;
+}
