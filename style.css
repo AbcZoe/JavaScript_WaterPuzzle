@@ -25,4 +25,24 @@ body{
 }
 #game-container{
     background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-wrap: wrap; /*超出容器的可用空間時，將自動換行*/
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.tube{
+    width:50px;
+    height: 200px;
+    border: 2px solid black;
+    border-radius: 0 0 10px 10px; /*左 上 右 下*/
+    margin: 10px;
+    display:  flex;
+    flex-direction: column-reverse; /*主軸為垂直方向（即列方向），但順序反向(由下到上)*/
+    overflow: hidden; /*超出容器範圍的內容將被隱藏，並且不會出現滾動條*/
+    margin-top: 20px;
+    border-top: none;
+}
+
+.water{
+    width: 100px;
 }
