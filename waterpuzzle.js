@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     const labelSelect=document.getElementById('label-select');
 
     const tubes=[];
+    let selectedTube=null;
     const colors = [
         "#FF5733", // 紅色
         "#33FF57", // 綠色
@@ -40,6 +41,37 @@ document.addEventListener('DOMContentLoaded',()=>{
         chooseLevel(selectedLevel);
     });
 
+    function pourWater(fromTube,toTube){
+        let fromWater = fromTube.querySelector('.water:last-child');
+        let toWater = toTube.querySelector('.water:last-child');
+        if(!toWater){
+            const color=fromWater? fromWater.style.background:null;
+            while(fromWater&&fromWater.style.background===color&&toTube.childElementCount()<4){
+                toTube.appendChild(fromWater);
+                fromWater=fromTube.querySelector('.water:last-child');
+            }
+        }else{
+            while(fromWater&&fromWater.style.background===toWater.style.background&&toTube.childElementCount()<4){
+                toTube.appendChild(fromWater);
+                fromWater=fromTube.querySelector('.water:last-child');
+                toWater=toTube.querySelector('.water:last-child');
+            }
+        }
+    }
+
+    function selectTube(tube){
+        if (selectedTube){
+            if (selectedTube!=tube){
+                pourWater(selectedTube,tube);
+            }
+            selectedTube.classList.remove('selected');
+            selectedTube=null;
+        }else{
+            selectedTube=tube;
+            selectedTube.classList.add('selected');
+        }
+    }
+
     function createTubes(){
         //gameContainer.innerHTML+='產生試管';
         gameContainer.innerHTML='';
@@ -49,15 +81,17 @@ document.addEventListener('DOMContentLoaded',()=>{
         for (let i=0;i<levelCount+1;i++){
             const tube=document.createElement('div');
             tube.classList.add('tube'); //.classList.add('') 為物件添加一個class
+            tube.addEventListener('click',()=>selectTube(tube));
             gameContainer.appendChild(tube);
             tubes.push(tube); //.push() 將一個或多個元素添加到陣列的末尾
         }
         //緩衝用試管
         for (let i=0;i<2;i++){
-            const empyTube=document.createElement('div');
-            empyTube.classList.add('tube');
-            gameContainer.appendChild(empyTube);
-            tubes.push(empyTube);
+            const emptyTube=document.createElement('div');
+            emptyTube.classList.add('tube');
+            emptyTube.addEventListener('click',()=>selectTube(emptyTube));
+            gameContainer.appendChild(emptyTube);
+            tubes.push(emptyTube);
         }
     }
 

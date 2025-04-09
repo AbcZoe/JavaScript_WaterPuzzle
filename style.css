@@ -46,3 +46,8 @@ body{
 .water{
     width: 100px;
 }
+.tube.selected{
+    border-color: 'red';
+    box-shadow: 0 0 10px black;
+    transform: translateY(-10px); /*向上偏移*/
+}
