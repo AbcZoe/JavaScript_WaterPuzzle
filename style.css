@@ -18,10 +18,10 @@ body{
     margin: 10px;
 }
 #game-info{
-    background-color: rgb(106, 141, 141);
+    background-color: rgb(127, 165, 165);
 }
 #controls{
-    background-color: rgb(138, 104, 104);
+    background-color: rgb(177, 138, 138);
 }
 #game-container{
     background-color: rgb(255, 255, 255);
