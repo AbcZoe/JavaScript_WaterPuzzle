@@ -46,12 +46,12 @@ document.addEventListener('DOMContentLoaded',()=>{
         let toWater = toTube.querySelector('.water:last-child');
         if(!toWater){
             const color=fromWater? fromWater.style.background:null;
-            while(fromWater&&fromWater.style.background===color&&toTube.childElementCount()<4){
+            while(fromWater&&fromWater.style.background===color&&toTube.childElementCount<4){
                 toTube.appendChild(fromWater);
                 fromWater=fromTube.querySelector('.water:last-child');
             }
         }else{
-            while(fromWater&&fromWater.style.background===toWater.style.background&&toTube.childElementCount()<4){
+            while(fromWater&&fromWater.style.background===toWater.style.background&&toTube.childElementCount<4){
                 toTube.appendChild(fromWater);
                 fromWater=fromTube.querySelector('.water:last-child');
                 toWater=toTube.querySelector('.water:last-child');
