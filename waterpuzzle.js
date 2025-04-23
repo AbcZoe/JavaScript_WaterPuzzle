@@ -41,6 +41,30 @@ document.addEventListener('DOMContentLoaded',()=>{
         chooseLevel(selectedLevel);
     });
 
+    function checkGameState(){
+        const allSameColor=(tube)=>{
+            const waters=Array.from(tube.childern)
+            return (
+                waters.length ===4 &&
+                waters.every(
+                    (water)=>
+                    water.style.backgroundColor===water[0].style.backgroundColor
+                )
+            );
+        };
+
+        let completedTubes=0;
+        tubes.forEach((tube)=>{
+            if(allSameColor(tube)){
+                completedTubes++;
+            }
+        });
+        document.getElementById("completed-tubes-count").textContent=completedTubes;
+        if(tubes.every(tube => tube.childElementCount===0 || allSameColor(tube))){
+            alert("你已完成本關卡");
+        }
+    }
+
     function pourWater(fromTube,toTube){
         let fromWater = fromTube.querySelector('.water:last-child');
         let toWater = toTube.querySelector('.water:last-child');
@@ -57,6 +81,7 @@ document.addEventListener('DOMContentLoaded',()=>{
                 toWater=toTube.querySelector('.water:last-child');
             }
         }
+        checkGameState();
     }
 
     function selectTube(tube){
