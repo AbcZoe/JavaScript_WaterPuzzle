@@ -29,6 +29,7 @@ document.addEventListener('DOMContentLoaded',()=>{
         "#F08080"  // 淺珊瑚色
       ];
     let levelCount=1;
+    let moveCount=0;
 
     function chooseLevel(Level){
         levelCount=Level;
@@ -61,8 +62,24 @@ document.addEventListener('DOMContentLoaded',()=>{
         });
         document.getElementById("completed-tubes-count").textContent=completedTubes;
         if(tubes.every(tube => tube.childElementCount===0 || allSameColor(tube))){
-            alert("你已完成本關卡");
+            if(levelCount===10){
+                alert("恭喜!你已完成所有挑戰!!!");
+            }else{
+                alert("你已完成本關卡");
+                levelCount++;
+                document.getElementById("level-count").textContent=levelCount;
+                document.getElementById("completed-tubes-count").textContent=0;
+                chooseLevel(levelCount);
+                createTubes();
+                fillTubes();
+                resetMoveCount();
+            }
         }
+    }
+
+    function resetMoveCount(){
+        moveCount=0;
+        document.getElementById("move-count").textContent=moveCount;
     }
 
     function pourWater(fromTube,toTube){
@@ -74,14 +91,17 @@ document.addEventListener('DOMContentLoaded',()=>{
                 toTube.appendChild(fromWater);
                 fromWater=fromTube.querySelector('.water:last-child');
             }
+            moveCount++;
         }else{
             while(fromWater&&fromWater.style.background===toWater.style.background&&toTube.childElementCount<4){
                 toTube.appendChild(fromWater);
                 fromWater=fromTube.querySelector('.water:last-child');
                 toWater=toTube.querySelector('.water:last-child');
             }
+            moveCount++;
         }
         checkGameState();
+        document.getElementById("move-count").textContent=moveCount;
     }
 
     function selectTube(tube){
@@ -152,6 +172,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     playerButton.addEventListener('click',()=>{
         //alert('開始玩遊戲!')
         tubes.length=0;
+        resetMoveCount();
         createTubes();
         fillTubes();
     });
