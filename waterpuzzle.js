@@ -43,12 +43,12 @@ document.addEventListener('DOMContentLoaded',()=>{
 
     function checkGameState(){
         const allSameColor=(tube)=>{
-            const waters=Array.from(tube.childern)
+            const waters=Array.from(tube.children)
             return (
-                waters.length ===4 &&
+                waters.length === 4 &&
                 waters.every(
                     (water)=>
-                    water.style.backgroundColor===water[0].style.backgroundColor
+                    water.style.backgroundColor===waters[0].style.backgroundColor
                 )
             );
         };
